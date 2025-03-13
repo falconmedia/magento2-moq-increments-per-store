@@ -1,0 +1,23 @@
+{
+  "name": "falconmedia/magento2-moq-increments-per-store",
+  "version": "1.0.0",
+  "description": "Magento 2 module that allows you to set the Minimal Order Qty and Increments per store",
+  "type": "magento2-module",
+  "authors": [
+    {
+      "name": "Henk Valk",
+      "email": "henk@falconmedia.nl"
+    }
+  ],
+  "require": {
+    "magento/module-catalog-inventory": "*"
+  },
+  "autoload": {
+    "files": [
+      "src/registration.php"
+    ],
+    "psr-4": {
+      "FalconMedia\\MoqIncrementsPerStore\\": "src/"
+    }
+  }
+}

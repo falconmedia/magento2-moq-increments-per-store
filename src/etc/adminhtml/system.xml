@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework/Config/etc/system_file.xsd">
+    <system>
+        <tab id="falconmedia" translate="label" sortOrder="100">
+            <label>Falcon Media</label>
+        </tab>
+        <section id="cataloginventory" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="item_options" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="enable_qty_increments" translate="label" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Qty Increments</label>
+                </field>
+                <field id="min_sale_qty" translate="label" type="text" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minimum Qty Allowed in Shopping Cart</label>
+                </field>
+                <field id="qty_increments" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Qty Increments</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

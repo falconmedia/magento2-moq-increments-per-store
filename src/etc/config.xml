@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework/Config/etc/config.xsd">
+    <default>
+        <cataloginventory>
+            <item_options>
+                <min_sale_qty>1</min_sale_qty>
+                <enable_qty_increments>0</enable_qty_increments>
+                <qty_increments>1</qty_increments>
+            </item_options>
+        </cataloginventory>
+    </default>
+</config>
