@@ -1,0 +1,63 @@
+<?php
+
+use Magento\Catalog\Block\Product\View;
+use Magento\Framework\Escaper;
+
+/** @var View $block */
+/** @var Escaper $escaper */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
+
+$_helper = $this->helper(Magento\Catalog\Helper\Output::class);
+$_product = $block->getProduct();
+$defaultQty = $_helper->productAttribute($_product, $_product->getDefaultQuantity(), 'default_quantity')
+    ?: $block->getProductDefaultQty() * 1;
+$buttonTitle = __('Add to Cart');
+$productId = $_product->getId();
+$stockItem = $_product->getStockItem();
+$qtyIncrements = (int) $stockItem->getQtyIncrements();
+
+?>
+
+<?php if ($_product->isSaleable()): ?>
+    <div class="box-tocart">
+        <div class="fieldset">
+            <?php if ($block->shouldRenderQuantity()) :?>
+                <div class="field qty">
+                    <label class="label" for="qty"><span><?= $escaper->escapeHtml(__('Qty')) ?></span></label>
+                    <div class="control">
+                        <div class="qty-increments" data-product-id="<?= $escaper->escapeHtmlAttr($productId) ?>">
+                            <input type="number"
+                                   name="qty"
+                                   id="qty"
+                                   title="<?= $escaper->escapeHtmlAttr(__('Qty')) ?>"
+                                   class="input-text qty" value="<?= $escaper->escapeHtmlAttr($block->getProductDefaultQty()) ?>"
+                                   maxlength="12"
+                                   step="<?= $escaper->escapeHtmlAttr($qtyIncrements) ?>"
+                                   data-validate="<?= $escaper->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                            />
+                        </div>
+                    </div>
+
+                </div>
+            <?php endif; ?>
+            <div class="actions">
+                <button type="submit"
+                        title="<?= $escaper->escapeHtmlAttr($buttonTitle) ?>"
+                        class="action btn-tertiary tocart"
+                        id="product-addtocart-button" disabled>
+                    <span><?= $escaper->escapeHtml($buttonTitle) ?></span>
+                </button>
+                <?= $block->getChildHtml('', true) ?>
+            </div>
+        </div>
+    </div>
+
+<?php endif; ?>
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/js/validate-product": {}
+        }
+    }
+</script>
